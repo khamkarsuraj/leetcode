@@ -27,9 +27,9 @@ class Solution:
         '''
 
         # Approach 2
-        # Traverse nodes with two pointers, slow will visit each node fast will goes alternate
-        # The time fast will reach at end, slow will be at middle node
-        slow = fast = head
+        # Traverse nodes with two pointers, head will visit each node fast will goes alternate
+        # The time fast will reach at end, head will be at middle node
+        fast = head
 
         while fast:
             fast = fast.next
@@ -37,6 +37,6 @@ class Solution:
                 fast = fast.next
             else:
                 break
-            slow = slow.next
+            head = head.next
         
-        return slow
+        return head
