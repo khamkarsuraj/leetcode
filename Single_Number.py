@@ -1,5 +1,18 @@
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
+        # Approach 0: Using set
+        # Time Complexity: O(n) | Space Complexity: O(n)
+        '''
+        set_var = set()
+        for i in nums:
+            if i in set_var:
+                set_var.remove(i)
+            else:
+                set_var.add(i)
+        return set_var.pop()
+        '''
+
+
         # Approach 1: Sort list and check set of two numbers from start to end
         # If set of two numbers are distinct return that number, else last number of list
         # Time Complexity: O(nlogn) | Space Complexity: O(1)
