@@ -1,7 +1,7 @@
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
         '''
-        Binary Search
+        Appraoch: Binary Search
         Time: O(logn)
         Space: O(1)
         '''
