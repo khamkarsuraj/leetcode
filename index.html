@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LeetCode Solutions</title>
+    <style>
+        
+        /* Center the table on the page */
+        table {
+            margin: 0 auto;
+            width: 50%;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #dddddd;
+        }
+
+        /* Heading style */
+        #header {
+            text-align: center;
+        }
+
+        /* Style for the header image */
+        #header-img {
+            display: block;
+            margin: 0 auto;
+            width: 200px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        #name {
+            font-size: 22px; /* Adjust the font size as needed */
+            color: #000000; /* Change the color to your preference */
+            margin: 10px 0; /* Add some spacing */
+            text-align: center; /* Center your name */
+            font-weight: bold; /* Make your name bold */
+            text-shadow: 2px 2px 4px rgba(48, 48, 48, 0.2); /* Add a subtle text shadow */
+        }
+
+        /* Center the hyperlinks with icons */
+        #links {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        #links a {
+            margin: 0 20px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        /* Center the header of the "Problem Number" column */
+        table th:first-child {
+            text-align: center;
+        }
+
+        /* Align the items in the "Problem Number" column to the right */
+        table td:first-child {
+            text-align: right;
+        }
+
+        /* Center the header of the "Language" column */
+        table th:nth-child(3) {
+            text-align: center;
+        }
+
+        /* Center the items in the "Language" column */
+        table td:nth-child(3) {
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon-32x32.png">
+</head>
+<body>
+    <!-- <div id="header">
+        <h1>LeetCode Solutions</h1>
+    </div> -->
+    <div id="header">
+        <img id="header-img" src="./leetcode-logo.png" alt="LeetCode">
+        <div id="name">Suraj B. Khamkar</div>
+    </div>
+    <!-- Hyperlinks with icons -->
+    <div id="links">
+        <a href="https://khamkarsuraj.github.io/portfolio/">
+            <i class="fas fa-globe"></i> Portfolio
+        </a>
+        <a href="https://www.linkedin.com/in/suraj-b-khamkar/">
+            <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+    </div>
+
+    <table>
+        <tr>
+            <th>Problem Number</th>
+            <th>Problem Name</th>
+            <th>Language</th>
+        </tr>
+    </table>
+
+    <script>
+        // Replace 'yourGitHubUsername' and 'yourRepoName' with your GitHub username and repository name
+        const username = 'khamkarsuraj';
+        const repo = 'LeetCode';
+
+        const table = document.querySelector('table');
+
+        // Fetch the file list from your GitHub repository
+        fetch(`https://api.github.com/repos/${username}/${repo}/contents`)
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(file => {
+                    const fileName = file.name;
+                    const problemNumber = fileName.match(/\d+/);
+                    const problemName = fileName.match(/(\d+\s)(.*)(\..*)/);
+                    let language = ''; // Initialize the language variable
+
+                    if (problemName) {
+                        if (problemName[3] === '.java') {
+                            language = 'Java';
+                        } else if (problemName[3] === '.py') {
+                            language = 'Python';
+                        }
+                    }
+
+                    if (problemNumber && problemName) {
+                        const tr = document.createElement('tr');
+                        const tdNumber = document.createElement('td');
+                        const tdName = document.createElement('td');
+                        const tdLanguage = document.createElement('td');
+                        const a = document.createElement('a');
+                        a.href = file.html_url; // Set the link to the file
+                        a.textContent = problemName[2];
+                        tdNumber.textContent = problemNumber[0];
+                        tdName.appendChild(a); // Add the anchor element to the cell
+                        tdLanguage.textContent = language; // Set the language
+                        tr.appendChild(tdNumber);
+                        tr.appendChild(tdName);
+                        tr.appendChild(tdLanguage);
+                        table.appendChild(tr);
+                    }
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+    </script>
+</body>
+</html>
