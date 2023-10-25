@@ -5,18 +5,23 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def helper(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        if not root:
-            return root
-        
-        temp = root.left
-        root.left = root.right
-        root.right = temp
+    #Recursion
+    #Time: O(n)
+    #Space: O(1)
+    def swap(self, currentNode):
+        if (currentNode == None):
+            return
 
-        self.helper(root.left)
-        self.helper(root.right)
-        
+        temp = currentNode.left
+        currentNode.left = currentNode.right
+        currentNode.right = temp
+
+        self.swap(currentNode.left)
+        self.swap(currentNode.right)
 
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        self.helper(root)
-        return root
+        if (root == None):
+            return root
+
+        self.swap(root)
+        return root        
