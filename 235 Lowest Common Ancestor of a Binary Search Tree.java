@@ -17,7 +17,7 @@ class Solution {
       // Try finding common ancestor for p and q.
       // You have to go eighter left or right from current node
       // If p and q splits to two different sides then that's your common ancestor, simply return it
-      // else keep going to left or right
+      // else keep going to left or right.
       if (p.val < root.val && q.val < root.val) return dfs(root.left, p, q);
       else if (p.val > root.val && q.val > root.val) return dfs(root.right, p, q);
       
