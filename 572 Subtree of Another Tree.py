@@ -4,6 +4,7 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
 class Solution:
     # Using Depth First Search Algorithm
     # Time: O(n)
