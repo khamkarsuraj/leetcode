@@ -116,13 +116,12 @@
     </table>
 
     <script>
-        // Replace 'yourGitHubUsername' and 'yourRepoName' with your GitHub username and repository name
         const username = 'khamkarsuraj';
-        const repo = 'LeetCode';
+        const repo = 'leetcode';
 
         const table = document.querySelector('table');
 
-        // Fetch the file list from your GitHub repository
+        // Fetch the file list from GitHub repository
         fetch(`https://api.github.com/repos/${username}/${repo}/contents`)
             .then(response => response.json())
             .then(data => {
