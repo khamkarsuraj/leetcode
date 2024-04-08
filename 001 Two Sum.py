@@ -13,3 +13,12 @@ class Solution:
             map[nums[index]] = index
 
         return []
+        
+        '''
+        # Using Counter and index
+        # Time: O(n^3)
+        # Space: O(1)
+        for i in range(0, len(nums)):
+            if (nums.count(target - nums[i]) > 0 and i != nums.index(target - nums[i])):
+                return [i, nums.index(target - nums[i])]
+        '''
