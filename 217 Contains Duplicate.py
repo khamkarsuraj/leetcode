@@ -53,6 +53,16 @@ class Solution:
         '''
         return not len(set(nums)) == len(nums)
         '''
+        '''
+        seen = set()
+
+        for i in nums:
+            if i in seen:
+                return True
+            seen.add(i)
+        
+        return False
+        '''
 
         # Approach 6: Using dictionary
         # Time Complexity: O(n) | Space Complexity: O(n)
