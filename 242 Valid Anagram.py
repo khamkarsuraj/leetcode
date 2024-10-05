@@ -1,5 +1,11 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
+        # Using Counter method from collections
+        if len(s) != len(t):
+            return False
+        
+        return Counter(s) == Counter(t)
+        '''
         # Using ASCII encoding
         # Time: O(n)
         # Space: O(1)
@@ -16,3 +22,4 @@ class Solution:
                 return False
         
         return True
+        '''
