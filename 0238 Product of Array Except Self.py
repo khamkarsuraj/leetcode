@@ -17,7 +17,7 @@ class Solution:
         for i in range(len(nums)-1, -1, -1):
             output[i] = output[i] * product
             product = product * nums[i]
-        
+
         return output
 
         # Brute Force Method - TLE
