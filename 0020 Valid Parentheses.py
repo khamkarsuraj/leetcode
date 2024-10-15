@@ -1,28 +1,18 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        # Using stack
-        # Time: O(n)
-        # Space: O(n)
-        if len(s) % 2 is not 0:
-            return False
+        # Using Stack
+        # Time O(n)
+        # Space O(n)
+        stack = deque()
+        matching_brackets = {')': '(', ']': '[', '}': '{'}
 
-        stack = []
-
-        for i in range(0, len(s)):
-            if s[i] is '(' or s[i] is '{' or s[i] is '[':
-                stack.append(s[i])
-            elif len(stack) is not 0:
-                ch = stack.pop()
-                if ch is '(' and s[i] is not ')':
-                        return False
-                elif ch is '{' and s[i] is not '}':
-                        return False
-                elif ch is '[' and s[i] is not ']':
-                        return False
+        for char in s:
+            if char in matching_brackets.values():
+                stack.append(char)
+            elif char in matching_brackets:
+                if not stack or stack.pop() != matching_brackets[char]:
+                    return False
             else:
                 return False
-        
-        if len(stack) is not 0:
-            return False
-        
-        return True
+
+        return not stack
