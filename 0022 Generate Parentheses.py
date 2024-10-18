@@ -1,4 +1,28 @@
 class Solution:
+    # Using only valid combination
+    # Time O(4^n / sqrt(n))
+    # Space O(C(n) * 2n)        C(n): n-th Catalan number
+    
+    def generateParenthesis(self, n: int) -> List[str]:
+        res = []
+
+        def backtrack(s, open, close):
+            if len(s) == n*2:
+                res.append(s)
+                return
+
+            # Go left with OPEN
+            if open < n:
+                backtrack(s + '(', open+1, close)
+            # Go righ with CLOSE
+            if close < open:
+                backtrack(s + ')', open, close+1)
+
+        backtrack('', 0, 0)
+        return res
+
+    '''
+    # Check every possible combination
     def generateParenthesis(self, n: int) -> List[str]:
         res = set()
         s = ''
@@ -29,3 +53,4 @@ class Solution:
 
         backtrack(s)
         return list(res)
+        '''
