@@ -3,20 +3,21 @@ class Solution:
         # Using Two Pointers
         # Time O(n)
         # Space O(1)
-        left, right = 0, len(s)-1
-        s = s.lower()
-
+        left, right = 0, len(s) - 1
+        
         while left < right:
+            # Skip non-alphanumeric characters
             while left < right and not s[left].isalnum():
-                left+=1
-
+                left += 1
             while left < right and not s[right].isalnum():
-                right-=1
+                right -= 1
             
-            if s[left] != s[right]:
+            # Compare characters case-insensitively
+            if s[left].lower() != s[right].lower():
                 return False
-
-            left+=1
-            right-=1
-
+            
+            # Move pointers inward
+            left += 1
+            right -= 1
+        
         return True
