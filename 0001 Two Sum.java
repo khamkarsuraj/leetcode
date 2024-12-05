@@ -17,8 +17,6 @@ class Solution {
 
             d.put(nums[i], i);
         }
-
         return ret;
-
     }
 }
