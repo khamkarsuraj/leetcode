@@ -4,13 +4,12 @@
 #         self.val = val
 #         self.next = next
 class Solution:
+    # Iterative Approach
+    # Time: O(n)
+    # Space: O(1)
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        # if list is empty, return empty list as it is
-        if head is None:
-            return head
-        
-        # if list consist of single element, return as it is
-        if head.next is None:
+        # if list is empty or single element, return empty list as it is
+        if head is None or head.next is None:
             return head
         
         # here we are swaping the links between nodes
@@ -19,10 +18,10 @@ class Solution:
         current = head.next
 
         while current is not None:
-            temp = current.next
+            hold = current.next
             current.next = prev
             prev = current
-            current = temp
+            current = hold
         
         # mark next of first node to NULL to avoid cycle in list
         head.next = None
