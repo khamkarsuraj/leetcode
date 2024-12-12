@@ -13,18 +13,14 @@ class Solution:
             return head
         
         # here we are swaping the links between nodes
-        # swaping links between nodes results code to execute in O(n) of time and O(1) space 
-        prev = head
-        current = head.next
+        # Reversing links between nodes results code
+        prev, current = None, head
 
         while current is not None:
             hold = current.next
             current.next = prev
             prev = current
             current = hold
-        
-        # mark next of first node to NULL to avoid cycle in list
-        head.next = None
 
         # return prev pointer which is last element of list
         return prev
