@@ -1,8 +1,8 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        # One pointer
-        # Time: O(n)
-        # Space: O(1)
+        # One pointer iteration
+        # time n
+        # space 1
         profit, buy = 0, float('inf')
         
         for p in prices:
