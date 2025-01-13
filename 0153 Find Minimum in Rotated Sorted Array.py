@@ -7,6 +7,7 @@ class Solution:
 
         while l < r:
             m = (l+r)//2
+            # means left side is sorted and greater, look right side of m
             if nums[r] < nums[m]:
                 l = m + 1
             else:
