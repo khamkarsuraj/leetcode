@@ -5,23 +5,38 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    #Recursion
-    #Time: O(n)
-    #Space: O(1)
-    def swap(self, currentNode):
-        if (currentNode == None):
-            return
-
-        temp = currentNode.left
-        currentNode.left = currentNode.right
-        currentNode.right = temp
-
-        self.swap(currentNode.left)
-        self.swap(currentNode.right)
-
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        if (root == None):
-            return root
+        # iterative - bfs
+        # time n
+        # space n
+        if not root:
+            return None
+        
+        queue = deque([root])  # Initialize a queue with the root node
+        
+        while queue:
+            node = queue.popleft()  # Get the next node from the queue
+            
+            # Swap the left and right children
+            node.left, node.right = node.right, node.left
+            
+            # Add the children to the queue if they exist
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        
+        return root
 
-        self.swap(root)
-        return root        
+        # recursion
+        # time n
+        # space h
+        # while not root:
+        #     return
+        
+        # self.invertTree(root.left)
+        # self.invertTree(root.right)
+
+        # root.left, root.right = root.right, root.left
+
+        # return root
