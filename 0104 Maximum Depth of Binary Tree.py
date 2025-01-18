@@ -5,14 +5,36 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    #Recursion
-    #Time: O(n)
-    #Space: O(1)
-    def depth(self, root: Optional[TreeNode]) -> int:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        # recursion
+        # time n
+        # space h where h is height of the tree
+        '''
         if not root:
             return 0
-        
-        return max(self.depth(root.left), self.depth(root.right))+1
 
-    def maxDepth(self, root: Optional[TreeNode]) -> int:
-        return self.depth(root)
+        return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
+        '''
+
+        # iterative - BFS
+        # time n
+        # space n
+        if not root:
+            return 0
+
+        depth = 0
+        que = deque([root])
+
+        while que:
+            depth += 1
+            for _ in range(len(que)):
+                node = que.popleft()
+                if node.left:
+                    que.append(node.left)
+                if node.right:
+                    que.append(node.right)
+
+        return depth
+
+
+        
