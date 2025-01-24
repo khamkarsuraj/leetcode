@@ -3,9 +3,6 @@ class Solution:
         # dfs - recursion
         # time n
         # space h
-        if not root:
-            return True
-
         def dfs(root):
             if not root:
                 return 0
@@ -17,6 +14,4 @@ class Solution:
                 return -1
             return 1 + max(lh, rh)
         
-        if dfs(root) == -1:
-            return False
-        return True
+        return dfs(root) != -1
