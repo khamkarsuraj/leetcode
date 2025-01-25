@@ -7,7 +7,7 @@
 class Solution:
     #Recursion
     #Time: O(n) n is no of nodes
-    #Space: O(1)
+    #Space: O(h)
     def helper(self, currentP, currentQ):
         #If you reached to last nodes, and both have null values. tree is identical so far
         if (currentP == None and currentQ == None):
@@ -23,4 +23,4 @@ class Solution:
         return self.helper(currentP.left, currentQ.left) and self.helper(currentP.right, currentQ.right)
 
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        return self.helper(p, q) 
+        return self.helper(p, q)
