@@ -16,13 +16,11 @@ class Solution:
         # It means that whatever the path you came through is identical, so return True
         if (current == None and subRoot == None):
             return True
-        # If any of the tree is finished before another tree
+
+        # 6. If any of the tree is finished before another tree
         # there are difference between no of nodes, return False
-        elif (current == None or subRoot == None):
-            return False
-        
-        # 6. If node exists but value is different for nodes, return False
-        if (current.val != subRoot.val):
+        # If node exists but value is different for nodes, return False
+        if current == None or subRoot == None or current.val != subRoot.val:
             return False
         # Else, values are same then go for remaining nodes
         else:
@@ -41,3 +39,29 @@ class Solution:
         
         # 1. Keep checking for first common node between root and subRoot if is there any
         return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
+
+
+# class Solution:
+#     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
+#         # dfs recursion
+#         # time nk
+#         # space hr + hs
+#         if not root:
+#             return False
+        
+#         # dfs helper function to check same tree or not
+#         def dfs(root, subRoot):
+#             if not root and not subRoot:
+#                 return True
+
+#             if not root or not subRoot or root.val != subRoot.val:
+#                 return False
+
+#             return dfs(root.left, subRoot.left) and dfs(root.right, subRoot.right)
+        
+#         # if root matches with subRoot
+#         if dfs(root, subRoot):
+#             return True
+    
+#         # else check recursively for left and right sub-tree
+#         return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
