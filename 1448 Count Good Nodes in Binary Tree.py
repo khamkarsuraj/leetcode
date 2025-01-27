@@ -8,7 +8,7 @@ class Solution:
         def dfs(max_val, curr):
             if not curr:
                 return
-            
+
             nonlocal ans
             if curr.val >= max_val:
                 max_val = curr.val
@@ -16,7 +16,7 @@ class Solution:
 
             dfs(max_val, curr.left)
             dfs(max_val, curr.right)
-        
+
         dfs(root.val, root)
 
         return ans
