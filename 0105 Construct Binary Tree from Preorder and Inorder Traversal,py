@@ -1,0 +1,29 @@
+class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        # dfs 
+        # time n
+        # space n
+
+        # dict to look into inorder indexes in O(1)
+        inorder_indexes = {value: index for index, value in enumerate(inorder)}
+
+        def construct(pl, pr, il, ir):
+
+            if pl>pr or il>ir:
+                return None
+
+            # preorder's first element is root always as preorder = PLR
+            root = TreeNode(preorder[pl])
+            index = inorder_indexes[root.val]
+        
+            # get size of left array to slice inorder array
+            left_size = index - il
+
+            # In inorder, as inorder = LPR all the left side elements of P is left nodes and same for right
+            root.left = construct(pl+1, pl+left_size, il, index-1)
+            root.right = construct(pl+left_size+1, pr, index+1, ir)
+    
+            return root
+        
+        # for root send preorder lef, right and inorder left, right indexes
+        return construct(0, len(preorder)-1, 0, len(inorder)-1)
